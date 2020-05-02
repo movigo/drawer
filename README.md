@@ -59,8 +59,8 @@ You must select a sidenav element with `target` function and call `drawer` funct
 const target = movigo.target('.sidenav')
 
 target.drawer({
-    leftSide: false, // Defines sidenav position: left or right (default: true)
-    open: true, // To close or open sidenav (default: true)
+    leftSide: false, // Defines the sidenav position: left or right (default: true)
+    open: true, // To close or open the sidenav (default: true)
     width: 300, // Width of the sidenav (default: 200)
 }).animate()
 ```
@@ -68,13 +68,16 @@ target.drawer({
 It's important to define some CSS properties in the sidenav to work correctly:
 
 ```html
-    <div class="sidenav" style="
-        position: absolute; <!-- Or fixed -->
-        top: 0;
-        width: 0;
-        height: 100%;
-        z-index: 999;
-    ">
+    <style>
+        .sidenav {
+            position: absolute; /* Or fixed */
+            top: 0;
+            width: 0;
+            height: 100%;
+            z-index: 999;
+        }
+    </style>
+    <div class="sidenav">
         Sidenav
     </div>
 ```
