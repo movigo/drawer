@@ -11,25 +11,35 @@ function drawer ([element], parameters, options) {
     leftSide: true,
     open: true,
     width: 200,
+    easing: 'ease-in-out',
+    backdropBrightness: 70,
     ...options
   }
+
+  element.style.top = '0'
 
   if (options.leftSide) {
     element.style.left = '0'
     element.style.right = 'inherit'
-  } else if (options.position === 'right') {
+  } else {
     element.style.left = 'inherit'
     element.style.right = '0'
   }
 
-  parameters.easing = 'ease-in-out'
+  parameters.easing = options.easing
 
   if (options.open) {
-    parameters.duration = .3
-    parameters.to = { width: `${options.width}px` }
+    parameters.duration = options.duration || .3
+    parameters.to = [
+      { width: `${options.width}px` },
+      { backdropFilter: `brightness(${options.backdropBrightness}%)` }
+    ]
   } else {
-    parameters.duration = .25
-    parameters.to = { width: '0px' }
+    parameters.duration = options.duration || .25
+    parameters.to = [
+      { width: '0px' },
+      { backdropFilter: 'brightness(100%)' }
+    ]
   }
 }
 
