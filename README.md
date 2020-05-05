@@ -31,11 +31,11 @@ ________________________________
 - :telephone_receiver: [Contacts](#telephone_receiver-contacts)
   - :boy: [Developers](#boy-developers)
 
-## :hammer: Install
+## Install
 
-### npm
+### NPM
 
-You can install movigo drawer plugin with npm:
+You can install Movigo drawer plugin with NPM:
 
 ```bash
 npm install @movigo/drawer --save
@@ -43,43 +43,61 @@ npm install @movigo/drawer --save
     
 ### CDN
 
-You can also load it using a \<script> using the unpkg CDN:
+You can also load it with CDNs:
     
 ```html
-<script src="https://unpkg.com/@movigo/core"></script> <!-- Required dependency -->
-<script src="https://unpkg.com/@movigo/drawer"></script>
+  <script src="https://unpkg.com/@movigo/core"></script> <!-- Required dependency -->
+  <script src="https://unpkg.com/@movigo/drawer"></script>
 ```
 
-## :video_game: Usage
+## Usage
 
-Drawer plugin create a `drawer` function in the Movigo function chaining.
-You must select a sidenav element with `target` function and call `drawer` function with the optional `options` parameter.
+Drawer plugin allows you to animate sidebars
+by creating a slide effect and obscuring the background container.
+
+It is necessary to select a sidenav as target, and optionally
+the background container if you want to obscure it.
+
+You can define width, position, duration and easing function of the sidenav. In addition,
+you can specify whether to open or close the sidenav and you can define the background brightness.
 
 ```js
-const target = movigo.target('.sidenav')
+  const sidenav = document.querySelector('.sidenav')
+  const container = document.querySelector('.container')
 
-target.drawer({
+  movigo.target([sidenav, container]).drawer({
     leftSide: false, // Defines the sidenav position: left or right (default: true)
-    open: true, // To close or open the sidenav (default: true)
+    open: false, // To close or open the sidenav (default: true)
     width: 300, // Width of the sidenav (default: 200)
-}).animate()
+    duration: .5, // Animation duration (default: .3 on opening, 0.25 on closing)
+    easing: 'linear', // Easing function (default: ease-in-out)
+    backdropBrightness: 70 // Backdrop container brightness in % (default: 60)
+  }).animate()
 ```
 
 It's important to define some CSS properties in the sidenav to work correctly:
 
 ```html
-    <style>
-        .sidenav {
-            position: absolute; /* Or fixed */
-            top: 0;
-            width: 0;
-            height: 100%;
-            z-index: 999;
-        }
-    </style>
-    <div class="sidenav">
+  <style>
+    .container {
+      position: relative;
+    }
+
+    .sidenav {
+      z-index: 999;
+      position: absolute; /* Or fixed for fullscreen sidenav */
+      width: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+  </style>
+
+  <div class="container">
+    <button onclick="openSidenav()"></button>
+      <div class="sidenav">
         Sidenav
-    </div>
+      </div>
+  </div>
 ```
 
 ## :chart_with_upwards_trend: Development
