@@ -73,7 +73,7 @@ div, h1, h2, h3, h4, h5, h6, p, a, li {
     color: #526878;
 }
 
-#animation > div {
+#animation > .container {
     position: relative;
     border: 1px solid lightgray;
     width: 300px;
@@ -105,8 +105,6 @@ div, h1, h2, h3, h4, h5, h6, p, a, li {
 #animation .sidenav {
     z-index: 1;
     position: absolute;
-    top: 0;
-    left: 0;
     width: 0;
     height: 100%;
     background-color: #535353;

@@ -36,7 +36,7 @@
         <script>document.write(document.title)</script>
     </h2>
 
-    <div>
+    <div class="container">
         <div onclick="play(true)" class="menu-button" title="Open menu">
             <div></div>
             <div></div>
@@ -73,11 +73,12 @@
 
 <script>
   const sidenav = document.querySelector('.sidenav')
+  const container = document.querySelector('.container')
 
   function play (open) {
     this.event.stopPropagation()
 
-    movigo.target(sidenav).drawer({ open }).animate()
+    movigo.target([sidenav, container]).drawer({ open }).animate()
   }
 </script>
 </html>
