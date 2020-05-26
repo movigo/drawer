@@ -52,14 +52,9 @@ You can also load it with CDNs:
 
 ## Usage
 
-Drawer plugin allows you to animate sidebars
-by creating a slide effect and obscuring the background container.
+Drawer plugin allows you to animate sidebars by creating a slide effect and obscuring the background container.
 
-It is necessary to select a sidenav as target, and optionally
-the background container if you want to obscure it.
-
-You can define width, position, duration and easing function of the sidenav. In addition,
-you can specify whether to open or close the sidenav and you can define the background brightness.
+It is necessary to select a sidenav as target, and optionally the background container if you want to obscure it. It is possible define width, position, duration and easing function of the sidenav animation. In addition, you can specify whether to open or close the sidenav and define the background brightness of the container.
 
 ```js
   const sidenav = document.querySelector('.sidenav')
